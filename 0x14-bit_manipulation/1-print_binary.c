@@ -12,7 +12,7 @@ void print_binary(unsigned long int n) {
 }
 
 int main() {
-    unsigned long int number = 42;
+    unsigned long int number = 1;
     printf("Binary representation of %lu: ", number);
     print_binary(number);
 
