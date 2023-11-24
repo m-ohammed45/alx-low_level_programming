@@ -1,49 +1,20 @@
-include "main.h"
+#include <stdio.h>
+void print_binary(unsigned long int n) {
+    int i;    
+    int size = sizeof(unsigned long int) * 8;
 
-/**
- * _pow - func calculates (base ^ power)
- * @base: base of the exponent
- * @power: power of the exponent
- *
- * Return: value of (base ^ power)
- */
-unsigned long int _pow(unsigned int base, unsigned int power)
-{
-	unsigned long int num;
-	unsigned int c;
-
-	num = 1;
-	for (c = 1; c <= power; c++)
-		num *= base;
-	return (num);
+    for (i = size - 1; i >= 0; i--) {
+        
+        int bit = (n >> i) & 1;   
+        putchar(bit + '0');
+    }
+    putchar('\n');
 }
 
-/**
- * print_binary - prints a number in binary notation
- * @n: number to print
- *
- * Return: void
- */
-void print_binary(unsigned long int h)
-{
-	unsigned long int divisor, check;
-	char flag;
+int main() {
+    unsigned long int number = 42;
+    printf("Binary representation of %lu: ", number);
+    print_binary(number);
 
-	flag = 0;
-	divisor = _pow(2, sizeof(unsigned long int) * 8 - 1);
-	while (divisor != 0)
-	{
-		check = h & divisor;
-		if (check == divisor)
-		{
-			flag = 1;
-			_putchar('1');
-		}
-		else if (flag == 1 || divisor == 1)
-		{
-			_putchar('0');
-		}
-		divisor >>= 1;
-	}
+    return 0;
 }
-
